@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.6
+    environment:
+      MYSQL_ROOT_PASSWORD: p@ssw0rd
+      MYSQL_DATABASE: odetamtr
+      MYSQL_USER: odetamtr
+      MYSQL_PASSWORD: odetamtr
+    ports:
+      - "3306:3306"
+  php56:
+    image: 56:latest
+    container_name: php56
+    depends_on:
+      - db
+    volumes:
+      - ./php/odeta:/var/www/odeta
+    ports:
+      - "80:80"
