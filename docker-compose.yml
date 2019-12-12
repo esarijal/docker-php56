@@ -11,11 +11,11 @@ services:
     ports:
       - "3306:3306"
   php56:
-    image: 56:latest
+    image: ermustaqbal/php56:latest
     container_name: php56
     depends_on:
       - db
     volumes:
-      - ./php/odeta:/var/www/odeta
+      - ./php:/var/www/odeta
     ports:
       - "80:80"
