@@ -3,15 +3,19 @@ version: '3'
 services:
   db:
     image: mysql:5.6
+    restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: p@ssw0rd
-      MYSQL_DATABASE: odetamtr
-      MYSQL_USER: odetamtr
-      MYSQL_PASSWORD: odetamtr
+      MYSQL_ROOT_PASSWORD: some_password
+      MYSQL_DATABASE: some_db
+      MYSQL_USER: some_db_user
+      MYSQL_PASSWORD: some_db_password
+    volumes:
+      - ./mysql:/var/lib/mysql
     ports:
       - "3306:3306"
   php56:
     image: ermustaqbal/php56:latest
+    restart: always
     container_name: php56
     depends_on:
       - db
